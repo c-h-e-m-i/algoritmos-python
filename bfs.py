@@ -34,10 +34,9 @@ def bfs(grafo, ini, fin):
     return -1 # Si hemos salido de la cola sin llegar a nuestro destino, significa que no se puede llegar,
               # lo cual simbolizamos devolviendo un -1
 
-
-
 if __name__ == "__main__":
     n, m, ini, fin = [int(x) for x in next(fh).split()] # Leemos n.º de nodos y aristas, nodo inicial, y nodo destino
     grafo = crearGrafo(n, m) # Creamos el grafo
     print(bfs(grafo, ini, fin)) # Ejecutamos BFS sobre el grafo
+
     fh.close() # Cerramos el archivo
