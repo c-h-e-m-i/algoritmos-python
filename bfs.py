@@ -1,8 +1,6 @@
 from collections import deque  # Usamos deque porque sacar elementos no finales de listas tiene coste O(n)
 
-fh = open('input.txt', 'r')  # Abrimos el archivo con la entrada y guardamos los datos en una variable global
-
-def crearGrafo(n, m):
+def crearGrafo(n, m, fh):
     grafo = [[] for _ in range(n+1)]  # Nuestro grafo será un array de (n+1) listas de adyacencia
                                       # (añadimos el +1 porque empezamos a numerar los nodos desde el 1)
     for _ in range(m):  # Por cada arista que tengamos...
@@ -35,7 +33,7 @@ def bfs(grafo, ini, fin):
                # lo cual simbolizamos devolviendo un -1
 
 if __name__ == "__main__":
-    n, m, ini, fin = [int(x) for x in next(fh).split()]  # Leemos n.º de nodos y aristas, nodo inicial, y nodo destino
-    grafo = crearGrafo(n, m)  # Creamos el grafo
-    print(bfs(grafo, ini, fin))  # Ejecutamos BFS sobre el grafo
-    fh.close()  # Cerramos el archivo
+    with open('input.txt', 'r') as fh:
+        n, m, ini, fin = [int(x) for x in next(fh).split()]  # Leemos n.º de nodos y aristas, nodo inicial, y nodo destino
+        grafo = crearGrafo(n, m, fh)  # Creamos el grafo
+        print(bfs(grafo, ini, fin))  # Ejecutamos BFS sobre el grafo
